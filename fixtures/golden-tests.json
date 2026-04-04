@@ -1,0 +1,102 @@
+{
+  "version": "1.0",
+  "mcp_name": "Dutch Energy Regulation MCP",
+  "tests": [
+    {
+      "id": "nl-energy-001",
+      "category": "search",
+      "description": "Search regulations for 'elektriciteit'",
+      "tool": "nl_energy_search_regulations",
+      "input": { "query": "elektriciteit" },
+      "assertions": { "result_not_empty": true, "min_results": 1 }
+    },
+    {
+      "id": "nl-energy-002",
+      "category": "data_retrieval",
+      "description": "Get regulation by reference (Elektriciteitswet 1998)",
+      "tool": "nl_energy_get_regulation",
+      "input": { "reference": "Elektriciteitswet 1998" },
+      "assertions": { "result_not_empty": true }
+    },
+    {
+      "id": "nl-energy-003",
+      "category": "search",
+      "description": "Search grid codes for 'netcode'",
+      "tool": "nl_energy_search_grid_codes",
+      "input": { "query": "netcode" },
+      "assertions": { "result_not_empty": true, "min_results": 1 }
+    },
+    {
+      "id": "nl-energy-004",
+      "category": "data_retrieval",
+      "description": "Get grid code by document ID",
+      "tool": "nl_energy_get_grid_code",
+      "input": { "document_id": 2 },
+      "assertions": { "result_not_empty": true }
+    },
+    {
+      "id": "nl-energy-005",
+      "category": "search",
+      "description": "Search decisions for 'tarief'",
+      "tool": "nl_energy_search_decisions",
+      "input": { "query": "tarief" },
+      "assertions": { "result_not_empty": true, "min_results": 1 }
+    },
+    {
+      "id": "nl-energy-006",
+      "category": "meta_tool",
+      "description": "About tool returns server metadata",
+      "tool": "nl_energy_about",
+      "input": {},
+      "assertions": { "result_not_empty": true }
+    },
+    {
+      "id": "nl-energy-007",
+      "category": "negative_test",
+      "description": "Non-existent regulation reference handles gracefully",
+      "tool": "nl_energy_get_regulation",
+      "input": { "reference": "NONEXISTENT-REF-999" },
+      "assertions": { "handles_gracefully": true }
+    },
+    {
+      "id": "nl-energy-008",
+      "category": "negative_test",
+      "description": "Non-existent grid code ID handles gracefully",
+      "tool": "nl_energy_get_grid_code",
+      "input": { "document_id": 99999 },
+      "assertions": { "handles_gracefully": true }
+    },
+    {
+      "id": "nl-energy-009",
+      "category": "search",
+      "description": "Search regulations with regulator filter",
+      "tool": "nl_energy_search_regulations",
+      "input": { "query": "gas", "regulator": "sodm" },
+      "assertions": { "result_not_empty": true, "min_results": 1 }
+    },
+    {
+      "id": "nl-energy-010",
+      "category": "search",
+      "description": "Search regulations with type filter",
+      "tool": "nl_energy_search_regulations",
+      "input": { "query": "wet", "type": "wet" },
+      "assertions": { "result_not_empty": true, "min_results": 1 }
+    },
+    {
+      "id": "nl-energy-011",
+      "category": "search",
+      "description": "Search grid codes by code_type",
+      "tool": "nl_energy_search_grid_codes",
+      "input": { "query": "congestie", "code_type": "congestion_management" },
+      "assertions": { "result_not_empty": true }
+    },
+    {
+      "id": "nl-energy-012",
+      "category": "cross_reference",
+      "description": "Search decisions for methodology approvals",
+      "tool": "nl_energy_search_decisions",
+      "input": { "query": "methodebesluit", "decision_type": "methodology" },
+      "assertions": { "result_not_empty": true, "min_results": 1 }
+    }
+  ]
+}

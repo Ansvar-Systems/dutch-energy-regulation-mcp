@@ -1,0 +1,37 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "eu.ansvar/dutch-energy-regulation-mcp",
+  "description": "Query Dutch energy regulation: ACM tariff methodology, TenneT NL grid codes, RVO SDE++ subsidy rules, SodM gas extraction and geothermal safety",
+  "repository": {
+    "url": "https://github.com/Ansvar-Systems/dutch-energy-regulation-mcp",
+    "source": "github"
+  },
+  "homepage": "https://ansvar.eu",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "keywords": [
+    "acm",
+    "tennet",
+    "rvo",
+    "sodm",
+    "dutch-energy-regulation",
+    "netherlands",
+    "energy",
+    "grid-code",
+    "sde",
+    "groningen",
+    "compliance",
+    "mcp",
+    "ansvar"
+  ],
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@ansvar/dutch-energy-regulation-mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

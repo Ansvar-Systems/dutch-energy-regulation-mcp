@@ -1,0 +1,93 @@
+# sources.yml -- Data provenance metadata
+# Reference: docs/mcp-infrastructure-blueprint.md
+
+schema_version: "1.0"
+mcp_name: "Dutch Energy Regulation MCP"
+category: "domain_intelligence"
+jurisdiction: "Netherlands"
+
+sources:
+  - name: "Autoriteit Consument & Markt (ACM)"
+    authority: "ACM"
+    official_url: "https://acm.nl"
+    retrieval_method: "MANUAL_CURATION"
+    format: "HTML"
+    authentication: "none"
+    update_frequency: "quarterly"
+    license:
+      type: "Public Domain (Dutch government publications)"
+      url: "https://acm.nl"
+      summary: "Dutch regulatory decisions are public records"
+    coverage:
+      scope: "Tariff methodology, method decisions, market monitoring, consumer protection"
+      item_count: 0
+    languages:
+      - "nl"
+
+  - name: "TenneT TSO B.V."
+    authority: "TenneT"
+    official_url: "https://tennet.eu"
+    retrieval_method: "MANUAL_CURATION"
+    format: "PDF"
+    authentication: "none"
+    update_frequency: "quarterly"
+    license:
+      type: "Public Domain (Dutch state-owned enterprise publications)"
+      url: "https://tennet.eu"
+      summary: "Grid codes and technical regulations are public"
+    coverage:
+      scope: "Grid codes, netcodes, congestion management, network connection requirements"
+      item_count: 0
+    languages:
+      - "nl"
+
+  - name: "Rijksdienst voor Ondernemend Nederland (RVO)"
+    authority: "RVO"
+    official_url: "https://rvo.nl"
+    retrieval_method: "MANUAL_CURATION"
+    format: "HTML"
+    authentication: "none"
+    update_frequency: "quarterly"
+    license:
+      type: "Public Domain (Dutch government publications)"
+      url: "https://rvo.nl"
+      summary: "Dutch government publications are freely available"
+    coverage:
+      scope: "SDE++ subsidy scheme, energy efficiency, renewable energy support"
+      item_count: 0
+    languages:
+      - "nl"
+
+  - name: "Staatstoezicht op de Mijnen (SodM)"
+    authority: "SodM"
+    official_url: "https://sodm.nl"
+    retrieval_method: "MANUAL_CURATION"
+    format: "HTML"
+    authentication: "none"
+    update_frequency: "quarterly"
+    license:
+      type: "Public Domain (Dutch government publications)"
+      url: "https://sodm.nl"
+      summary: "Dutch safety regulations are public records"
+    coverage:
+      scope: "Gas extraction safety, geothermal energy safety, mining safety"
+      item_count: 0
+    languages:
+      - "nl"
+
+  - name: "Overheid.nl (Wetten.overheid.nl)"
+    authority: "Dutch Government"
+    official_url: "https://wetten.overheid.nl"
+    retrieval_method: "MANUAL_CURATION"
+    format: "XML"
+    authentication: "none"
+    update_frequency: "quarterly"
+    license:
+      type: "Public Domain (Dutch legislation)"
+      url: "https://wetten.overheid.nl"
+      summary: "Dutch legislation is freely available"
+    coverage:
+      scope: "Elektriciteitswet, Gaswet, Warmtewet, Energiewet, Mijnbouwwet"
+      item_count: 0
+    languages:
+      - "nl"
