@@ -33,6 +33,7 @@ import {
   getRecordCounts,
   getRegulationCountByRegulator,
 } from "./db.js";
+import { buildCitation } from "./citation.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -327,7 +328,17 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         if (!regulation) {
           return errorContent(`Regulation not found: ${parsed.reference}`);
         }
-        return textContent(regulation);
+        const reg = regulation as Record<string, unknown>;
+        return textContent({
+          ...reg,
+          _citation: buildCitation(
+            String(reg.reference ?? parsed.reference),
+            String(reg.title ?? reg.reference ?? parsed.reference),
+            "nl_energy_get_regulation",
+            { reference: parsed.reference },
+            reg.url != null ? String(reg.url) : undefined,
+          ),
+        });
       }
 
       case "nl_energy_search_grid_codes": {
@@ -346,7 +357,17 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         if (!code) {
           return errorContent(`Grid code not found: ID ${parsed.document_id}`);
         }
-        return textContent(code);
+        const gc = code as Record<string, unknown>;
+        return textContent({
+          ...gc,
+          _citation: buildCitation(
+            String(gc.reference ?? gc.title ?? `Grid Code ${parsed.document_id}`),
+            String(gc.title ?? gc.reference ?? `Grid Code ${parsed.document_id}`),
+            "nl_energy_get_grid_code",
+            { document_id: String(parsed.document_id) },
+            gc.url != null ? String(gc.url) : undefined,
+          ),
+        });
       }
 
       case "nl_energy_search_decisions": {
