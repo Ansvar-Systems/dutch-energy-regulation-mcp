@@ -273,7 +273,7 @@ function makeMeta() {
 function textContent(data: unknown) {
   const payload =
     data !== null && typeof data === "object" && !Array.isArray(data)
-      ? { ...(data as Record<string, unknown>), ...makeMeta() }
+      ? { ...(data as unknown as Record<string, unknown>), ...makeMeta() }
       : { data, ...makeMeta() };
   return {
     content: [
@@ -328,7 +328,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         if (!regulation) {
           return errorContent(`Regulation not found: ${parsed.reference}`);
         }
-        const reg = regulation as Record<string, unknown>;
+        const reg = regulation as unknown as Record<string, unknown>;
         return textContent({
           ...reg,
           _citation: buildCitation(
@@ -357,7 +357,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         if (!code) {
           return errorContent(`Grid code not found: ID ${parsed.document_id}`);
         }
-        const gc = code as Record<string, unknown>;
+        const gc = code as unknown as Record<string, unknown>;
         return textContent({
           ...gc,
           _citation: buildCitation(
